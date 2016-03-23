@@ -1,5 +1,6 @@
 package client;
 
+import server.GameCubeMaze;
 import com.jme3.app.DebugKeysAppState;
 import com.jme3.app.SimpleApplication;
 import com.jme3.app.StatsAppState;
@@ -61,6 +62,22 @@ public class GameClient extends SimpleApplication implements ClientNetworkListen
     }
 
     // -------------------------------------------------------------------------
+    // This client received its InitialClientMessage.
+    private void initGame(NewClientMessage msg) {
+        System.out.println("Received initial message from server. Initializing playfield.");
+        //
+        // store ID
+        this.ID = msg.ID;
+        //
+        //store coordinates
+        playfield = new ClientPlayfield(this);
+
+        for (FieldData fd : msg.field) {
+            playfield.addSphere(fd);
+        }
+    }
+    // -------------------------------------------------------------------------
+
     public void SimpleUpdate(float tpf) {
     }
 
@@ -117,7 +134,6 @@ public class GameClient extends SimpleApplication implements ClientNetworkListen
     // -------------------------------------------------------------------------
     // Keyboard input
     private void initKeys() {
-        
     }
 
     // key action
@@ -130,12 +146,11 @@ public class GameClient extends SimpleApplication implements ClientNetworkListen
     // message received
     public void messageReceived(Message msg) {
         if (msg instanceof NewClientMessage) {
-            NewClientMessage ncm = (NewClientMessage)msg;
+            NewClientMessage ncm = (NewClientMessage) msg;
             if (this.ID == -1) {
                 //starting the game fresh
                 initGame(ncm);
             } else {
-                
             }
         }
     }

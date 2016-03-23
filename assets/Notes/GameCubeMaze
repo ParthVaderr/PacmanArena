@@ -1,0 +1,13 @@
+GameCubeMaze Objectives:
+
+Primary:
+1. Needs to be able to generate a 3d maze where every point is reachable from 
+every other point. 
+
+2. Requires two fixed locations: Pacman start and Ghost prison. These may in 
+the future be dynamically placed but for now will be static until such a time
+as we are confident that game viability is established.
+
+3. The cube will be generated in the server and established in the FieldData.
+This field data will be sent to the clients which will use the "wall" class
+to build the cube for each player.

@@ -8,6 +8,6 @@ import com.jme3.network.serializing.Serializable;
 public class FieldData {
     
     public FieldData() {
-    
+        
     }
 }
