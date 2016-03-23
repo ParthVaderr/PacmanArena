@@ -28,6 +28,7 @@ public class GameServer implements ServerNetworkListener {
         networkHandler = new ServerNetworkHandler(this);
         playfield = new PlayField();
         initCube();
+        playfield.addMaze(cube);
     }
 
 

@@ -9,7 +9,9 @@ import java.util.Random;
 public class PlayField {
 
     public LinkedList<FieldData> data;
-
+    public GameCubeMaze maze;
+    
+    
     // -------------------------------------------------------------------------
     public PlayField() {
         data = new LinkedList<FieldData>();
@@ -26,5 +28,9 @@ public class PlayField {
         data.addLast(newData);
         
         return (true);
+    }
+    
+    public void addMaze (GameCubeMaze m){
+        maze = m;
     }
 }
