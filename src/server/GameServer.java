@@ -5,11 +5,11 @@ package server;
 
 import com.jme3.network.Message;
 import messages.NewClientMessage;
-
 public class GameServer implements ServerNetworkListener {
 
     ServerNetworkHandler networkHandler;
     PlayField playfield;
+    GameCubeMaze cube;
 
     // -------------------------------------------------------------------------
     public static void main(String[] args) {
@@ -27,9 +27,16 @@ public class GameServer implements ServerNetworkListener {
     public GameServer() {
         networkHandler = new ServerNetworkHandler(this);
         playfield = new PlayField();
+        initCube();
     }
 
 
+    // -------------------------------------------------------------------------
+    // Builds the Cube
+    public void initCube(){
+        cube = new GameCubeMaze(10, 10, 10);
+    }
+            
     // -------------------------------------------------------------------------
     // Methods required by ServerNetworkHandler
     public void messageReceived(Message msg) {
